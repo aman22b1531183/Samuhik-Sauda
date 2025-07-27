@@ -1,0 +1,261 @@
+/* src/components/Home.css */
+
+.home-container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-direction: column; /* Default to column for mobile-first */
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 1rem;
+  background-color: #e0f2f7; /* Light blue background */
+  border-radius: 15px;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* General Section Styles */
+.section-heading {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #34495e;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: #666;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+}
+
+/* About Section Features */
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card img {
+  max-width: 100%;
+  height: 180px; /* Fixed height for consistency */
+  object-fit: cover; /* Cover the area */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.feature-card h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 0.8rem;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* How It Works Section */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.step-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-number {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  background-color: #007bff;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.4);
+  z-index: 1;
+}
+
+.step-card h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #34495e;
+  margin-top: 1rem; /* Adjust margin due to step number */
+  margin-bottom: 0.8rem;
+}
+
+.step-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Call to Action Section */
+.cta-section {
+  background-color: #2c3e50; /* Dark background */
+  color: white;
+  padding: 3rem 1rem;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 3rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section .section-heading {
+  color: white;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* New styles for CTA buttons */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.cta-register-button,
+.cta-login-button {
+  background-color: #28a745; /* Green for register */
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.cta-login-button {
+  background-color: #007bff; /* Blue for login */
+}
+
+.cta-register-button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: translateY(-2px);
+}
+
+.cta-login-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px);
+}
+
+.cta-register-button:active,
+.cta-login-button:active {
+  transform: translateY(0);
+}
+
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .hero-section {
+    flex-direction: row; /* Row layout on larger screens */
+    text-align: left;
+  }
+  .hero-content {
+    text-align: left;
+  }
+  .hero-image {
+    flex-shrink: 0; /* Prevent image from shrinking too much */
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle,
+  .section-description,
+  .cta-section p {
+    font-size: 1rem;
+  }
+  .section-heading {
+    font-size: 1.8rem;
+  }
+  .home-container {
+    padding: 1rem;
+  }
+  .cta-buttons {
+    flex-direction: column; /* Stack buttons on small screens */
+    gap: 1rem;
+  }
+  .cta-register-button,
+  .cta-login-button {
+    width: 100%; /* Full width buttons on small screens */
+  }
+}

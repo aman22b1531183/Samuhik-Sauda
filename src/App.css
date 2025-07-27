@@ -1,0 +1,275 @@
+/* src/App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f8f9fa; /* Light background */
+  color: #333;
+}
+
+/* Basic reset for elements */
+* {
+  box-sizing: border-box;
+}
+
+.app-container {
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Light background */
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem; /* Reduced padding to make header smaller */
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 8px 8px; /* Rounded bottom corners */
+}
+
+/* New styles for header brand (logo and title) */
+.header-brand {
+  display: flex; /* Changed back to flex for side-by-side */
+  flex-direction: row; /* Ensure row direction */
+  align-items: center; /* Vertically align items in the middle */
+  gap: 0.5rem; /* Space between logo and title */
+}
+
+.app-logo {
+  height: 40px; /* Adjusted height for better balance */
+  width: auto; /* Maintain aspect ratio */
+  /* No margin-right/bottom needed here as gap handles spacing */
+}
+
+
+.app-title {
+  font-size: 1.1rem; /* Further reduced font size for text */
+  font-weight: 600;
+  color: #2c3e50; /* Darker blue/grey for title */
+  /* No margin here, gap handles spacing */
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.user-email {
+  font-weight: 600;
+  color: #34495e;
+}
+
+.user-role {
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #27ae60; /* Green for role */
+}
+
+.logout-button {
+  background-color: #e74c3c; /* Red */
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-left: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* New styles for header auth buttons */
+.header-auth-buttons {
+  display: flex;
+  gap: 0.8rem; /* Space between buttons */
+}
+
+.header-login-button,
+.header-register-button {
+  background-color: #007bff; /* Blue */
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.header-login-button:hover,
+.header-register-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+.app-main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.dashboard-panel {
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #28a745; /* Green */
+}
+
+.dashboard-message {
+  font-size: 1.1rem;
+  text-align: center;
+  color: #555;
+  line-height: 1.6;
+}
+
+.error-message {
+  color: #dc3545; /* Red */
+  text-align: center;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Loading Spinner Styles */
+.app-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #f8f9fa;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #3498db; /* Blue for spinner */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Notification Bar Styles */
+.notification-bar {
+  position: fixed; /* Changed to fixed positioning */
+  top: 0; /* Position at the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for perfect centering */
+  width: 100%; /* Take full width */
+  max-width: 600px; /* Still limit max width */
+  padding: 0.8rem 1.5rem;
+  margin-top: 0.5rem; /* Small margin from the very top */
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: slideInDown 0.5s ease-out;
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.notification-info {
+  background-color: #e7f3ff; /* Light blue */
+  color: #0056b3; /* Darker blue */
+  border: 1px solid #cce5ff;
+}
+
+.notification-success {
+  background-color: #d4edda; /* Light green */
+  color: #155724; /* Dark green */
+  border: 1px solid #c3e6cb;
+}
+
+.notification-error {
+  background-color: #f8d7da; /* Light red */
+  color: #721c24; /* Dark red */
+  border: 1px solid #f5c6cb;
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-50px) translateX(-50%); /* Adjust for fixed positioning */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) translateX(-50%); /* Adjust for fixed positioning */
+    opacity: 1;
+  }
+}
+
+/* Responsive Adjustments for App.css */
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .logout-button {
+    margin-left: 0;
+  }
+  .notification-bar {
+    margin: 0.5rem 1rem; /* Adjust margin for smaller screens */
+    padding: 0.6rem 1rem;
+    left: 1rem; /* Adjust left position for smaller screens */
+    right: 1rem; /* Adjust right position for smaller screens */
+    width: auto; /* Allow width to be determined by margin */
+    transform: translateX(0); /* Remove transform for full width on mobile */
+  }
+  @keyframes slideInDown { /* Re-adjust keyframes for mobile */
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .header-brand { /* Adjust for mobile header */
+    flex-direction: row; /* Keep side-by-side on mobile too for this specific request */
+    align-items: center;
+    gap: 0.3rem; /* Slightly more gap on mobile */
+  }
+  .app-logo {
+    height: 35px; /* Adjust logo size for mobile */
+  }
+  .app-title {
+    font-size: 1rem; /* Adjust title size for mobile */
+  }
+  .header-auth-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .header-login-button,
+  .header-register-button {
+    width: 100%;
+  }
+}

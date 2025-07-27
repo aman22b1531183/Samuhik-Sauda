@@ -1,0 +1,465 @@
+/* src/components/VendorDashboard.css */
+
+.vendor-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #34495e;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.8rem;
+}
+
+/* Form Styles */
+.deal-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.form-input,
+.form-select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.submit-button {
+  grid-column: 1 / -1; /* Span full width */
+  padding: 1rem 1.5rem;
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  margin-top: 1rem;
+}
+
+.submit-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.submit-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Deal Cards Grid */
+.deals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.deal-card {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added transition */
+}
+
+.deal-card:hover { /* Added hover effect */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.deal-item-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #007bff; /* Blue */
+  margin-bottom: 0.8rem;
+}
+
+.deal-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.4rem;
+}
+
+.deal-quantity,
+.deal-quantity-collected,
+.deal-quantity-remaining {
+  font-weight: 600;
+  color: #333;
+}
+
+.deal-quantity-collected {
+  color: #28a745; /* Green for collected */
+}
+
+.deal-quantity-remaining {
+  color: #dc3545; /* Red for remaining */
+}
+
+.deal-status {
+  font-style: italic;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed #e0e0e0;
+}
+
+.status-open {
+  color: #007bff; /* Blue */
+  font-weight: 600;
+}
+.status-ready_for_supplier_offer {
+  color: #ffc107; /* Orange */
+  font-weight: 600;
+}
+.status-closed_accepted {
+  color: #28a745; /* Green */
+  font-weight: 600;
+}
+.status-closed_expired {
+  color: #6c757d; /* Grey */
+  font-weight: 600;
+}
+
+
+.deal-owner-tag {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.contribution-area {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.contribution-input {
+  flex-grow: 1;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.join-deal-button,
+.contribute-button {
+  background-color: #007bff; /* Blue */
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease; /* Added transform transition */
+}
+
+.join-deal-button:hover,
+.contribute-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.join-deal-button:active,
+.contribute-button:active { /* Added active state */
+  transform: translateY(0);
+}
+
+.cancel-button {
+  background-color: #6c757d; /* Grey */
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268; /* Darker grey on hover */
+  transform: translateY(-2px);
+}
+
+.cancel-button:active {
+  transform: translateY(0);
+}
+
+.no-deals-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.deal-ready-message,
+.deal-closed-message {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.deal-ready-message {
+  background-color: #fff3cd; /* Light yellow */
+  color: #856404; /* Dark yellow */
+  border: 1px solid #ffeeba;
+}
+
+.deal-closed-message {
+  background-color: #d4edda; /* Light green */
+  color: #155724; /* Dark green */
+  border: 1px solid #c3e6cb;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* New styles for offers list */
+.offers-list {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #ccc;
+  text-align: left; /* Align text within offers list */
+}
+
+.offers-list-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 0.8rem;
+}
+
+.offer-item {
+  background-color: #e9f5ff; /* Light blue background for offer */
+  border: 1px solid #cce5ff;
+  border-radius: 6px;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.offer-item p {
+  margin: 0; /* Remove default paragraph margin */
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.offer-notes {
+  font-style: italic;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.accept-offer-button {
+  background-color: #28a745; /* Green */
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 0.8rem;
+  align-self: flex-end; /* Align button to the right within the flex column */
+}
+
+.accept-offer-button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: translateY(-2px);
+}
+
+.accept-offer-button:active {
+  transform: translateY(0);
+}
+
+.no-offers-yet {
+  font-size: 0.9rem;
+  color: #777;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* New styles for Order History section */
+.order-history-section {
+  margin-top: 2rem;
+}
+
+.no-history-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.history-card {
+  background-color: #f0f8ff; /* Lighter blue for history cards */
+  border: 1px solid #d0e8ff;
+}
+
+.history-accepted-price {
+  font-weight: 600;
+  color: #155724; /* Dark green */
+  margin-top: 0.5rem;
+}
+
+.history-expired-message {
+  font-weight: 600;
+  color: #721c24; /* Dark red */
+  margin-top: 0.5rem;
+}
+
+/* New styles for deal controls (search and toggle) */
+.deal-controls {
+  display: flex;
+  flex-direction: column; /* Default to column for mobile-first */
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0; /* Added a subtle border */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Added subtle inner shadow */
+}
+
+.search-input {
+  width: 100%; /* Full width on small screens */
+  max-width: 400px; /* Limit max width on larger screens */
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.view-toggle {
+  display: flex;
+  border: 1px solid #007bff;
+  border-radius: 6px;
+  overflow: hidden; /* Ensures rounded corners apply to inner buttons */
+}
+
+.toggle-button {
+  padding: 0.75rem 1.2rem;
+  background-color: #ffffff;
+  color: #007bff;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.toggle-button:first-child {
+  border-right: 1px solid #007bff;
+}
+
+.toggle-button.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+}
+
+.toggle-button:hover:not(.active) {
+  background-color: #e7f3ff; /* Lighter blue on hover */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .deal-form {
+    grid-template-columns: 1fr; /* Stack form fields on small screens */
+  }
+  .deals-grid,
+  .offers-list-grid {
+    grid-template-columns: 1fr; /* Stack cards on small screens */
+  }
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .logout-button {
+    margin-left: 0;
+  }
+  .deal-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-input {
+    max-width: 100%;
+  }
+  .view-toggle {
+    width: 100%;
+  }
+  .toggle-button {
+    flex-grow: 1; /* Make buttons take equal width */
+  }
+  .toggle-button:first-child {
+    border-right: none; /* Remove border between stacked buttons */
+    border-bottom: 1px solid #007bff; /* Add bottom border */
+  }
+}

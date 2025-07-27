@@ -1,0 +1,433 @@
+/* src/components/SupplierDashboard.css */
+
+.supplier-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #34495e;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.8rem;
+}
+
+.no-deals-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.deals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.deal-card {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added transition */
+}
+
+.deal-card:hover { /* Added hover effect */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.deal-item-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #007bff; /* Blue */
+  margin-bottom: 0.8rem;
+}
+
+.deal-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.4rem;
+}
+
+.deal-quantity,
+.deal-quantity-collected {
+  font-weight: 600;
+  color: #333;
+}
+
+.deal-quantity-collected {
+  color: #28a745; /* Green for collected */
+}
+
+.deal-status {
+  font-style: italic;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed #e0e0e0;
+}
+
+.status-ready_for_supplier_offer {
+  color: #ffc107; /* Orange */
+  font-weight: 600;
+}
+/* Re-using status styles from VendorDashboard.css for consistency */
+.status-open {
+  color: #007bff; /* Blue */
+  font-weight: 600;
+}
+.status-closed_accepted {
+  color: #28a745; /* Green */
+  font-weight: 600;
+}
+.status-closed_expired {
+  color: #6c757d; /* Grey */
+  font-weight: 600;
+}
+
+
+.make-offer-button {
+  background-color: #007bff; /* Blue */
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease; /* Added transform transition */
+  margin-top: 1rem;
+  width: 100%; /* Full width button */
+}
+
+.make-offer-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.make-offer-button:active { /* Added active state */
+  transform: translateY(0);
+}
+
+.make-offer-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.offer-input-area {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #e0e0e0;
+}
+
+.form-group {
+  margin-bottom: 0.8rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #333;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.offer-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.submit-offer-button {
+  flex-grow: 1;
+  background-color: #28a745; /* Green */
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submit-offer-button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: translateY(-2px);
+}
+
+.submit-offer-button:active {
+  transform: translateY(0);
+}
+
+.submit-offer-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.cancel-offer-button {
+  background-color: #6c757d; /* Grey */
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.cancel-offer-button:hover {
+  background-color: #5a6268; /* Darker grey on hover */
+  transform: translateY(-2px);
+}
+
+.cancel-offer-button:active {
+  transform: translateY(0);
+}
+
+.error-message {
+  color: #dc3545; /* Red */
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.success-message {
+  color: #28a745; /* Green */
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* New styles for My Submitted Offers section */
+.my-offers-section {
+  margin-top: 2rem;
+}
+
+.no-offers-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.offers-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.submitted-offer-card {
+  background-color: #e9f5ff; /* Light blue background */
+  border: 1px solid #cce5ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added transition */
+}
+
+.submitted-offer-card:hover { /* Added hover effect */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.offer-item-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.submitted-offer-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+.offer-status {
+  font-style: italic;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed #e0e0e0;
+}
+
+.offer-accepted-message {
+  background-color: #d4edda; /* Light green */
+  color: #155724; /* Dark green */
+  border: 1px solid #c3e6cb;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+.offer-rejected-message {
+  background-color: #f8d7da; /* Light red */
+  color: #721c24; /* Dark red */
+  border: 1px solid #f5c6cb;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+.offer-pending-message { /* New style for pending offers */
+  background-color: #fff3cd; /* Light yellow */
+  color: #856404; /* Dark yellow */
+  border: 1px solid #ffeeba;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+/* New styles for My Accepted Offers section */
+.accepted-offers-section {
+  margin-top: 2rem;
+}
+
+.no-accepted-offers-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.accepted-offer-card {
+  background-color: #d4edda; /* Light green for accepted offers */
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added transition */
+}
+
+.accepted-offer-card:hover { /* Added hover effect */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.accepted-offer-card .offer-item-name {
+  color: #155724; /* Darker green for accepted offer title */
+}
+
+.accepted-deal-status,
+.accepted-deal-closed-date {
+  font-weight: 600;
+  color: #333;
+}
+
+/* New styles for contact info */
+.contact-info {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #34495e;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed #e0e0e0;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* New styles for deal controls (search and toggle) */
+.deal-controls {
+  display: flex;
+  flex-direction: column; /* Default to column for mobile-first */
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0; /* Added a subtle border */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Added subtle inner shadow */
+}
+
+.search-input {
+  width: 100%; /* Full width on small screens */
+  max-width: 400px; /* Limit max width on larger screens */
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* Responsive adjustments for deal controls */
+@media (min-width: 769px) { /* Apply these styles on larger screens */
+  .deal-controls {
+    flex-direction: row; /* Row layout on larger screens */
+    justify-content: space-between;
+  }
+  .search-input {
+    width: auto; /* Auto width on larger screens */
+    flex-grow: 1; /* Allow search input to grow */
+    margin-right: 1rem; /* Space between search and toggle */
+  }
+}
