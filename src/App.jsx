@@ -15,8 +15,7 @@ function App() {
   const [userRole, setUserRole] = useState(null); // Stores 'vendor' or 'supplier'
   const [loading, setLoading] = useState(true); // Manages loading state during auth check
   const [notification, setNotification] = useState({ message: '', type: '' }); // New state for notifications
-  const [showAuth, setShowAuth] = useState(false); // State to toggle between Home and Auth for unauthenticated users
-  const [showHomeExplicitly, setShowHomeExplicitly] = useState(true); // New state to explicitly show Home page
+  const [showAuth, setShowAuth] = useState(false); // New state to toggle between Home and Auth
 
   // Function to show a notification
   const showNotification = (message, type = 'info') => {
@@ -34,7 +33,6 @@ function App() {
         // User is logged in
         setUser(currentUser);
         setShowAuth(false); // Hide auth form if user logs in
-        // Do NOT set showHomeExplicitly to false here, let user decide to go to dashboard or stay on home
         
         // Fetch user role from Firestore
         const userDocRef = doc(db, "users", currentUser.uid);
@@ -55,7 +53,6 @@ function App() {
         setUser(null);
         setUserRole(null);
         setShowAuth(false); // Default to showing Home page on logout
-        setShowHomeExplicitly(true); // Ensure Home page is shown when logged out
       }
       setLoading(false); // Authentication check is complete
     });
@@ -70,7 +67,6 @@ function App() {
       await auth.signOut();
       console.log("User logged out successfully.");
       showNotification('Logged out successfully!', 'info');
-      setShowHomeExplicitly(true); // Go back to Home page after logout
     } catch (error) {
       console.error("Error logging out:", error.message);
       showNotification(`Logout failed: ${error.message}`, 'error');
@@ -93,15 +89,13 @@ function App() {
       <header className="app-header">
         {/* Logo and Title */}
         <div className="header-brand">
-          {/* CORRECTED LOGO PATH: Use import.meta.env.BASE_URL */}
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Samuhik Sauda Logo" className="app-logo" /> {/* Assumes logo.png is in your public folder */}
+          <img src="/logo.png" alt="Samuhik Sauda Logo" className="app-logo" /> {/* Update src with your logo file name */}
           <h1 className="app-title">Samuhik Sauda</h1>
         </div>
 
-        {user ? ( // If user is logged in, show Home button, welcome message, and logout
-          <div className="user-info-and-nav">
-            <button onClick={() => setShowHomeExplicitly(true)} className="header-home-button">Home</button>
-            <p className="user-welcome-text">
+        {user ? ( // If user is logged in, show welcome and logout
+          <div className="user-info">
+            <p>
               Welcome, <span className="user-email">{user.email}</span> (<span className="user-role">{userRole}</span>)
             </p>
             <button onClick={handleLogout} className="logout-button">
@@ -109,9 +103,9 @@ function App() {
             </button>
           </div>
         ) : ( // If no user, show Login/Register buttons in header
-          <div className="header-auth-buttons">
-            <button onClick={() => { setShowAuth(true); setShowHomeExplicitly(false); }} className="header-login-button">Login</button>
-            <button onClick={() => { setShowAuth(true); setShowHomeExplicitly(false); }} className="header-register-button">Register</button>
+          <div className="header-auth-buttons"> {/* New div for auth buttons in header */}
+            <button onClick={() => setShowAuth(true)} className="header-login-button">Login</button>
+            <button onClick={() => setShowAuth(true)} className="header-register-button">Register</button> {/* Both lead to Auth form for simplicity */}
           </div>
         )}
       </header>
@@ -129,32 +123,29 @@ function App() {
           showAuth ? ( // If showAuth is true, show Auth component
             <Auth showNotification={showNotification} />
           ) : ( // Otherwise, show Home component
-            <Home onLoginClick={() => setShowAuth(true)} onRegisterClick={() => setShowAuth(true)} user={user} />
+            <Home onLoginClick={() => setShowAuth(true)} onRegisterClick={() => setShowAuth(true)} />
           )
-        ) : ( // If a user is logged in
-          showHomeExplicitly ? ( // If showHomeExplicitly is true, show Home component
-            <Home onLoginClick={() => setShowAuth(true)} onRegisterClick={() => setShowAuth(true)} user={user} />
-          ) : ( // Otherwise, show the dashboard based on their role
-            <div className="dashboard-panel">
-              <h2 className="dashboard-title">
-                {userRole === 'vendor' ? 'Vendor Dashboard' : 'Supplier Dashboard'}
-              </h2>
+        ) : (
+          // If a user is logged in, show the dashboard based on their role
+          <div className="dashboard-panel">
+            <h2 className="dashboard-title">
+              {userRole === 'vendor' ? 'Vendor Dashboard' : 'Supplier Dashboard'}
+            </h2>
 
-              {userRole === 'vendor' && (
-                <VendorDashboard showNotification={showNotification} />
-              )}
+            {userRole === 'vendor' && (
+              <VendorDashboard showNotification={showNotification} />
+            )}
 
-              {userRole === 'supplier' && (
-                <SupplierDashboard showNotification={showNotification} />
-              )}
+            {userRole === 'supplier' && (
+              <SupplierDashboard showNotification={showNotification} />
+            )}
 
-              {user && userRole === null && (
-                <p className="error-message">
-                  Your role could not be determined. Please contact support or try re-logging in.
-                </p>
-              )}
-            </div>
-          )
+            {user && userRole === null && (
+              <p className="error-message">
+                Your role could not be determined. Please contact support or try re-logging in.
+              </p>
+            )}
+          </div>
         )}
       </main>
     </div>
